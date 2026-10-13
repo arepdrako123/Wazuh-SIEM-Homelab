@@ -123,13 +123,9 @@ Expected agent information:
 
 The following screenshots will be added after successful verification.
 
-### Windows Agent Service
-
-![Windows Agent Service](../screenshots/04-windows-agent-service.png)
-
 ### Windows Agent Dashboard
 
-![Windows Agent Active](../screenshots/05-windows-agent-active.png)
+![Windows Agent Dashboard](../screenshots/agent-dashboard.png)
 
 ## 9. Troubleshooting
 
