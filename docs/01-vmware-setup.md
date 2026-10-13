@@ -40,7 +40,7 @@ The Ubuntu virtual machine successfully communicated with Google's public server
 
 ### Verification Screenshot
 
-![Ubuntu System Verification](../screenshots/02-ubuntu-system-verification.png)
+![Ubuntu System Verification](../screenshots/display-storage.png)
 
 ### Findings
 
