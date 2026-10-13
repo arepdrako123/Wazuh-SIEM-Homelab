@@ -48,8 +48,4 @@ The Ubuntu virtual machine is operational, with sufficient CPU and approximately
 
 Network connectivity was successfully verified. However, the current 40 GB root filesystem is below the recommended storage capacity for the planned Wazuh all-in-one deployment.
 
-### Next Steps
 
-1. Expand the virtual disk capacity to 60 GB.
-2. Verify the updated partition and filesystem sizes.
-3. Proceed with Wazuh SIEM installation.
