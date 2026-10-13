@@ -80,7 +80,7 @@ Screenshots will be added after successful verification:
 - File creation alert
 - File modification alert
 - File deletion alert
-![FIM Configuration](screenshots/after-detection.png)
+![Wazuh FIM Detection Result](../screenshots/after-detection.png)
 
 ## 8. Learning Outcomes
 
