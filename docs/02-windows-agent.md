@@ -155,10 +155,7 @@ This phase is intended to develop practical knowledge of:
 
 ## 11. Next Phase
 
-**Phase 4: File Integrity Monitoring (FIM)**
+**Phase 3: File Integrity Monitoring (FIM)**
 
 The next phase will focus on configuring File Integrity Monitoring on the Windows endpoint to detect file creation, modification, and deletion activities.
 
-## Project Status
-
-**Phase 3: In Progress — Awaiting Agent Installation and Dashboard Verification**
