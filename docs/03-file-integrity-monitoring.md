@@ -80,7 +80,7 @@ Screenshots will be added after successful verification:
 - File creation alert
 - File modification alert
 - File deletion alert
--[Evidence](../screenshots/after detection.png)
+-[Evidence](../screenshots/afterdetection.png)
 
 ## 8. Learning Outcomes
 
