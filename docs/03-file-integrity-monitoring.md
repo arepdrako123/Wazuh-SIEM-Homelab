@@ -92,12 +92,4 @@ This lab aims to strengthen practical understanding of:
 - Security event investigation
 - Windows endpoint configuration
 
-## 9. Next Phase
 
-**Phase 5: FIM Detection Analysis**
-
-The next phase will focus on investigating the generated alerts and documenting the detection results.
-
-## Project Status
-
-**Phase 4: In Progress — Awaiting Detection Verification**
