@@ -1,30 +1,30 @@
 # 🛡️ Wazuh SIEM Homelab
 
-### Security Information and Event Management | Endpoint Monitoring | File Integrity Monitoring
+**Security Information and Event Management (SIEM) | Endpoint Monitoring | File Integrity Monitoring (FIM)**
 
-A hands-on cybersecurity homelab project focused on deploying and configuring **Wazuh SIEM** to monitor Windows endpoints, collect security events, detect file integrity changes, and investigate security alerts.
+A hands-on cybersecurity homelab project focused on deploying **Wazuh SIEM**, monitoring a Windows endpoint, and detecting file integrity changes in a controlled virtualized environment.
 
-This project demonstrates practical experience in **Security Operations Center (SOC) fundamentals, SIEM administration, endpoint monitoring, log analysis, and threat detection**.
+This project demonstrates practical experience in SIEM deployment, Windows endpoint monitoring, Linux administration, log collection, and basic security event analysis.
 
 ---
 
 ## 📌 Project Overview
 
-The objective of this project is to build a functional Security Information and Event Management (SIEM) environment using Wazuh.
+The purpose of this project is to build a functional Security Information and Event Management (SIEM) environment using Wazuh.
 
-The lab consists of an Ubuntu virtual machine running the Wazuh SIEM platform and a Windows 11 host configured with the Wazuh Agent.
+The homelab consists of an Ubuntu Linux virtual machine running the Wazuh SIEM platform and a Windows 11 host running the Wazuh Agent.
 
-The Windows endpoint communicates with the Wazuh Manager, allowing security-related activities to be monitored and analyzed through a centralized dashboard.
+The Windows endpoint communicates with the Wazuh Manager, allowing endpoint security events and file integrity changes to be collected and monitored through the Wazuh Dashboard.
 
 ### Project Objectives
 
-- Deploy a Wazuh SIEM server in a virtualized environment.
-- Configure and manage Windows endpoint monitoring.
-- Establish communication between Wazuh Manager and Wazuh Agent.
+- Set up an Ubuntu virtual machine using VMware Workstation.
+- Deploy and configure Wazuh SIEM.
+- Install and configure the Wazuh Agent on Windows 11.
+- Establish communication between the Windows Agent and Wazuh Manager.
 - Implement File Integrity Monitoring (FIM).
 - Detect file creation, modification, and deletion activities.
-- Investigate security alerts and analyze event logs.
-- Document technical configurations and detection results.
+- Document the implementation process and detection results.
 
 ---
 
@@ -32,38 +32,38 @@ The Windows endpoint communicates with the Wazuh Manager, allowing security-rela
 
 ```text
              WINDOWS 11 HOST
-        +------------------------+
-        |                        |
-        |      Wazuh Agent       |
-        |                        |
-        |  File Integrity        |
-        |  Monitoring (FIM)      |
-        |                        |
-        +-----------+------------+
+       +--------------------------+
+       |                          |
+       |       Wazuh Agent        |
+       |                          |
+       |  File Integrity          |
+       |  Monitoring (FIM)        |
+       |                          |
+       +------------+-------------+
                     |
                     | TCP 1514 / 1515
                     |
-        +-----------v------------+
-        |                        |
-        |    VMware Workstation  |
-        |                        |
-        |   Ubuntu 24.04.5 LTS   |
-        |                        |
-        |     Wazuh Manager      |
-        |     Wazuh Indexer      |
-        |     Filebeat           |
-        |     Wazuh Dashboard    |
-        |                        |
-        +------------------------+
+       +------------v-------------+
+       |                          |
+       |     VMware Workstation   |
+       |                          |
+       |    Ubuntu 24.04.5 LTS    |
+       |                          |
+       |      Wazuh Manager       |
+       |      Wazuh Indexer       |
+       |      Filebeat            |
+       |      Wazuh Dashboard     |
+       |                          |
+       +--------------------------+
 ```
 
-**Architecture Explanation:**
+### Architecture Description
 
-1. The Windows 11 endpoint runs the Wazuh Agent.
-2. The Wazuh Agent collects endpoint security information and monitors configured directories.
-3. The agent communicates with the Wazuh Manager hosted on Ubuntu.
-4. The Wazuh platform processes and stores security events.
-5. Security alerts and monitoring results are reviewed through the Wazuh Dashboard.
+1. **Windows 11 Host:** Acts as the monitored endpoint.
+2. **Wazuh Agent:** Collects endpoint security information and monitors selected files and directories.
+3. **Ubuntu Virtual Machine:** Hosts the Wazuh SIEM infrastructure.
+4. **Wazuh Manager:** Receives and analyzes endpoint security events.
+5. **Wazuh Dashboard:** Provides a centralized interface for reviewing endpoint status and security alerts.
 
 ---
 
@@ -74,62 +74,58 @@ The Windows endpoint communicates with the Wazuh Manager, allowing security-rela
 | Wazuh SIEM 4.14.8 | Security monitoring and event analysis |
 | Ubuntu 24.04.5 LTS | Wazuh server operating system |
 | Windows 11 | Monitored endpoint |
-| VMware Workstation | Virtualization environment |
-| Wazuh Agent | Endpoint monitoring and log collection |
-| Windows PowerShell | Agent installation, configuration, and testing |
-| File Integrity Monitoring | Detection of file system changes |
-| GitHub | Technical documentation and project portfolio |
+| VMware Workstation | Virtualization platform |
+| Wazuh Agent | Endpoint monitoring |
+| Windows PowerShell | Agent installation and testing |
+| File Integrity Monitoring | Detection of file changes |
+| GitHub | Project documentation |
 
 ---
 
 ## 🚀 Project Implementation
 
-### Phase 1 — Virtual Machine Setup
+### Phase 1 — VMware & Ubuntu Setup
 
-Configured an Ubuntu Linux virtual machine using VMware Workstation.
+Configured an Ubuntu virtual machine using VMware Workstation to host the Wazuh SIEM environment.
 
 **Activities:**
+
 - Installed Ubuntu 24.04.5 LTS.
 - Configured virtual machine resources.
 - Verified network connectivity.
-- Prepared the environment for Wazuh installation.
+- Installed Wazuh SIEM components.
+- Prepared the environment for endpoint monitoring.
 
-### Phase 2 — Wazuh SIEM Deployment
+**Documentation:** [01 — VMware Setup](docs/01-vmware-setup.md)
 
-Deployed Wazuh SIEM on the Ubuntu virtual machine.
-
-**Components installed:**
-- Wazuh Manager
-- Wazuh Indexer
-- Filebeat
-- Wazuh Dashboard
-
-The deployment established a centralized security monitoring environment.
-
-### Phase 3 — Windows Agent Deployment
+### Phase 2 — Windows Wazuh Agent Deployment
 
 Installed and configured the Wazuh Agent on the Windows 11 host.
 
 **Activities:**
-- Verified connectivity through TCP ports 1514 and 1515.
-- Installed the Wazuh Agent using PowerShell.
-- Configured the Wazuh Manager connection.
-- Verified the Windows Agent service.
-- Confirmed the endpoint displayed an **Active** status in the Wazuh Dashboard.
 
-**Deployment Result:**
+- Verified network connectivity between Windows and Ubuntu.
+- Tested TCP ports 1514 and 1515.
+- Installed the Windows Wazuh Agent using PowerShell.
+- Configured the Wazuh Manager connection.
+- Verified the Wazuh Agent service.
+- Confirmed successful agent registration through the Wazuh Dashboard.
+
+**Agent Information:**
 
 | Field | Result |
 |---|---|
 | Agent Name | Windows-Host |
 | Agent ID | 001 |
 | Operating System | Windows 11 |
-| Agent Version | 4.14.8 |
+| Wazuh Version | 4.14.8 |
 | Connection Status | Active |
 
-### Phase 4 — File Integrity Monitoring (FIM)
+**Documentation:** [02 — Windows Agent Deployment](docs/02-windows-agent.md)
 
-Implemented File Integrity Monitoring on the Windows endpoint to identify changes within a designated testing directory.
+### Phase 3 — File Integrity Monitoring (FIM)
+
+Implemented File Integrity Monitoring to detect changes in a dedicated Windows testing directory.
 
 **Monitored Directory:**
 
@@ -141,59 +137,39 @@ Implemented File Integrity Monitoring on the Windows endpoint to identify change
 <directories realtime="yes" check_all="yes">C:\Wazuh-FIM-Lab</directories>
 ```
 
-**Detection Scenarios:**
+The monitoring configuration enables Wazuh to track file system changes within the selected directory.
 
-| Test Case | Activity | Detection |
+**Detection Experiments:**
+
+| Experiment | Activity | Result |
 |---|---|---|
 | Test 1 | File Creation | Detected |
 | Test 2 | File Modification | Detected |
 | Test 3 | File Deletion | Detected |
 
-The Wazuh FIM Dashboard displayed three file integrity events categorized as added, modified, and deleted.
+The Wazuh File Integrity Monitoring dashboard displayed three events categorized as added, modified, and deleted.
 
-These tests were conducted in a controlled lab environment to validate endpoint monitoring capabilities.
+These experiments were performed in a controlled environment to validate the FIM detection capability.
 
-**Detailed Documentation:**
-
-[File Integrity Monitoring Lab](docs/03-file-integrity-monitoring.md)
+**Documentation:** [03 — File Integrity Monitoring](docs/03-file-integrity-monitoring.md)
 
 ---
 
 ## 📊 Detection Results
 
-### File Integrity Monitoring
+### File Integrity Monitoring Dashboard
 
-The Wazuh Dashboard recorded file integrity events generated during the monitoring experiment.
+The following screenshot shows the File Integrity Monitoring results collected from the Windows endpoint.
 
-The detected activities included:
+The dashboard displays three categories of file integrity events:
 
-- **Added:** A new file was created in the monitored directory.
-- **Modified:** The monitored file content was changed.
-- **Deleted:** The monitored file was removed.
+- **Added:** A new file was created.
+- **Modified:** An existing file was changed.
+- **Deleted:** A monitored file was removed.
 
-The dashboard displayed a total of three events across these categories.
+![Wazuh FIM Detection Dashboard](screenshots/after-detection.png)
 
-### Detection Dashboard
-
-![Wazuh FIM Detection Results](screenshots/after-detection.png)
-
-The screenshot provides evidence of the file integrity monitoring experiment conducted on the Windows endpoint.
-
----
-
-## 🔍 Security Analysis
-
-The File Integrity Monitoring experiment demonstrates how Wazuh can support security analysts in identifying changes to monitored files.
-
-Such monitoring may help identify:
-
-- Unauthorized file modifications.
-- Unexpected changes to configuration files.
-- Suspicious file creation.
-- Deletion of monitored files.
-- Potential indicators of system tampering.
-
-**Note:** The activities performed in this project were authorized lab simulations. Detection of a file change does not necessarily indicate malicious activity.
+The results demonstrate that Wazuh successfully recorded file system changes during the controlled monitoring experiment.
 
 ---
 
@@ -201,59 +177,61 @@ Such monitoring may help identify:
 
 ```text
 Wazuh-SIEM-Homelab/
-|
-|-- README.md
-|
-|-- docs/
-|   |-- 03-file-integrity-monitoring.md
-|   |-- Additional lab documentation
-|
-|-- screenshots/
-|   |-- after-detection.png
-|   |-- Additional evidence screenshots
+│
+├── README.md
+│
+├── docs/
+│   ├── 01-vmware-setup.md
+│   ├── 02-windows-agent.md
+│   └── 03-file-integrity-monitoring.md
+│
+└── screenshots/
+    └── after-detection.png
 ```
 
-The `docs` directory contains technical documentation, while the `screenshots` directory stores supporting evidence from the lab environment.
+The `docs` directory contains step-by-step technical documentation, while the `screenshots` directory stores supporting evidence from the homelab.
 
 ---
 
 ## 🧠 Skills Demonstrated
 
-**Security Operations & Monitoring**
-- SIEM Deployment and Administration
+### Security Operations
+
+- SIEM Deployment and Configuration
 - Endpoint Security Monitoring
-- Security Event Collection
 - File Integrity Monitoring
-- Security Alert Investigation
+- Security Event Collection
+- Basic Security Alert Analysis
 
-**System & Network Administration**
-- Linux System Administration
+### System Administration
+
+- Ubuntu Linux Administration
 - Windows PowerShell
-- Virtual Machine Configuration
-- TCP/IP Connectivity Troubleshooting
+- VMware Virtualization
 - Windows Service Management
+- Network Connectivity Troubleshooting
 
-**Technical Documentation**
-- Cybersecurity Lab Documentation
-- Detection Testing
+### Documentation
+
+- Technical Documentation
+- Security Testing
 - Evidence Collection
-- GitHub Project Management
+- GitHub Repository Management
 
 ---
 
 ## 📈 Future Improvements
 
-The following enhancements are planned to expand the homelab:
+The following enhancements are planned for future development:
 
-- [x] Ubuntu virtual machine setup
-- [x] Wazuh SIEM installation
-- [x] Windows Agent deployment
+- [x] Ubuntu VMware Setup
+- [x] Wazuh SIEM Deployment
+- [x] Windows Wazuh Agent Installation
 - [x] File Integrity Monitoring
-- [ ] Detailed security alert investigation
-- [ ] Windows failed login detection
-- [ ] Custom Wazuh detection rules
-- [ ] Security incident analysis report
-- [ ] Additional endpoint security use cases
+- [ ] Windows Failed Login Detection (Event ID 4625)
+- [ ] Security Alert Investigation
+- [ ] Custom Wazuh Detection Rules
+- [ ] SOC Incident Investigation Report
 
 ---
 
@@ -261,9 +239,11 @@ The following enhancements are planned to expand the homelab:
 
 Successfully deployed a Wazuh SIEM homelab integrating an Ubuntu-based Wazuh server with a Windows 11 endpoint.
 
-The environment demonstrated centralized endpoint monitoring and the detection of file creation, modification, and deletion activities.
+The Windows Agent was registered and connected to the Wazuh Manager, enabling centralized endpoint monitoring.
 
-This project provides a practical foundation for developing skills in **SOC operations, SIEM monitoring, security alert analysis, and defensive cybersecurity**.
+File Integrity Monitoring was configured and tested through controlled file creation, modification, and deletion experiments.
+
+This project provides practical exposure to **SIEM deployment, endpoint monitoring, Linux administration, and defensive cybersecurity fundamentals**.
 
 ---
 
@@ -278,4 +258,4 @@ This project provides a practical foundation for developing skills in **SOC oper
 **Project Type:** Cybersecurity Homelab  
 **Focus Area:** Blue Team / Security Operations Center (SOC)  
 **Platform:** Wazuh SIEM  
-**Environment:** Windows 11 + Ubuntu Linux + VMware Workstation
+**Environment:** Windows 11, Ubuntu Linux, VMware Workstation
